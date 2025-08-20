@@ -21,18 +21,18 @@ class OrgMemberAdmin(admin.ModelAdmin):
 @admin.register(College)
 class CollegeAdmin(admin.ModelAdmin):
     list_display = ("college_name", "created_at", "updated_at")
-    search_fields = ("college_name")
-    list_filter = ("created_at")
+    search_fields = ("college_name",)
+    list_filter = ("created_at",)
 
 @admin.register(Program)
 class ProgramAdmin(admin.ModelAdmin):
     list_display = ("prog_name", "college")
-    search_fields = ("prog_name", "college_name")
-    list_filter = ("college")
+    search_fields = ("prog_name", "college_name",)
+    list_filter = ("college",)
 
 @admin.register(Organization)
 class OrganizationAdmin(admin.ModelAdmin):
     list_display = ("name", "college", "description")
-    search_fields = ("name", "description")
-    list_filter = ("college")
+    search_fields = ("name", "description",)
+    list_filter = ("college",)
 
