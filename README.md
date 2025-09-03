@@ -8,7 +8,7 @@
 
 ## Authors:
 ### - Kim Padrones:
-    - The one who made the this website using Django and Python.
+    - The one who made this website using Django and Python.
 ### - Mica Lanat:
     - The one who will finish and re-check for further refinements.
 
