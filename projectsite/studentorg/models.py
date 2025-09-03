@@ -43,6 +43,5 @@ class OrgMember (BaseModel):
     organization = models. ForeignKey (Organization, on_delete=models.CASCADE)
     date_joined = models. DateField()
 
-    def __str__(self):
-        return f"{self.student.lastname}, {self.student.firstname} - {self.organization.name}"
+    
 # Create your models here.
