@@ -12,3 +12,7 @@
 ### - Mica Lanat:
     - The one who will finish and re-check for further refinements.
 
+## Additional author
+### - Nestor Jann Asag:
+    - The one who will finish and re-check the team output for further refinements and bug check/fixes.
+
