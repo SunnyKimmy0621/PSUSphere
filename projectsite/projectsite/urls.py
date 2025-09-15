@@ -16,8 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from studentorg.views import HomePageView, OrganizationList, OrganizationCreateView, OrganizationUpdateView
+from studentorg.views import HomePageView, OrganizationList, OrganizationCreateView, OrganizationUpdateView, OrganizationDeleteView
 from studentorg import views
+from .views import (
+    OrgMemberList, OrgMemberCreateView, OrgMemberUpdateView, OrgMemberDeleteView,
+    StudentList, StudentCreateView, StudentUpdateView, StudentDeleteView,
+    CollegeList, CollegeCreateView, CollegeUpdateView, CollegeDeleteView,
+    ProgramList, ProgramCreateView, ProgramUpdateView, ProgramDeleteView,
+)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -25,5 +31,29 @@ urlpatterns = [
     path('organization_list/', OrganizationList.as_view(), name='organization-list'),
     path('organization_list/add', OrganizationCreateView.as_view(), name='organization-add'),
     path('organization_list/<pk>',OrganizationUpdateView.as_view(), name='organization-update'),
+
+
+    path("orgmembers/", OrgMemberList.as_view(), name="orgmember-list"),
+    path("orgmembers/add/", OrgMemberCreateView.as_view(), name="orgmember-add"),
+    path("orgmembers/<int:pk>/edit/", OrgMemberUpdateView.as_view(), name="orgmember-edit"),
+    path("orgmembers/<int:pk>/delete/", OrgMemberDeleteView.as_view(), name="orgmember-delete"),
+
+
+    path("students/", StudentList.as_view(), name="student-list"),
+    path("students/add/", StudentCreateView.as_view(), name="student-add"),
+    path("students/<int:pk>/edit/", StudentUpdateView.as_view(), name="student-edit"),
+    path("students/<int:pk>/delete/", StudentDeleteView.as_view(), name="student-delete"),
+
+
+    path("colleges/", CollegeList.as_view(), name="college-list"),
+    path("colleges/add/", CollegeCreateView.as_view(), name="college-add"),
+    path("colleges/<int:pk>/edit/", CollegeUpdateView.as_view(), name="college-edit"),
+    path("colleges/<int:pk>/delete/", CollegeDeleteView.as_view(), name="college-delete"),
+
+
+    path("programs/", ProgramList.as_view(), name="program-list"),
+    path("programs/add/", ProgramCreateView.as_view(), name="program-add"),
+    path("programs/<int:pk>/edit/", ProgramUpdateView.as_view(), name="program-edit"),
+    path("programs/<int:pk>/delete/", ProgramDeleteView.as_view(), name="program-delete"),
 ]
 

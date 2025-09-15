@@ -51,7 +51,10 @@
                                     <td>{{ org.name }}</td>
                                     <td>{{ org.college }}</td>
                                     <td>{{ org.description }}</td>
-                                    <td><a href="organization_list/{{ org.id }}">Edit</a></td>
+                                    <td>
+                                        <a href="organization_list/{{ object.id }}">Edit</a>
+                                        <a href="organization_list/{{ object.id }}/delete" class="text-danger">Delete</a>
+                                    </td>
                                 </tr>
                                 {% empty %}
                                 <tr>
