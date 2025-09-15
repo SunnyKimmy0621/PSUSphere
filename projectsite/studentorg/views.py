@@ -3,7 +3,7 @@ from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView 
 from django.urls import reverse_lazy
 from studentorg.models import Organization, OrgMember, Student, College, Program
-from studentorg.forms import OrganizationForm, OrgMemberForm, StudentForm, CollegeFrom, ProgramForm
+from studentorg.forms import OrganizationForm, OrgMemberForm, StudentForm, CollegeForm, ProgramForm
 
 class HomePageView(ListView):
     model = Organization
@@ -39,7 +39,7 @@ class OrgMemberList(ListView):
      template_name = 'orgmember_list.html'
      paginate_by = 5
 
-class OrgMemberCreateVieww(CreatView):
+class OrgMemberCreateView(CreateView):
      model = OrgMember
      form_class = OrgMemberForm
      trmplate_name = 'orgmember_form.html'

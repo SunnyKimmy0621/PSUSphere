@@ -24,6 +24,8 @@ from studentorg.views import (
     CollegeList, CollegeCreateView, CollegeUpdateView, CollegeDeleteView,
     ProgramList, ProgramCreateView, ProgramUpdateView, ProgramDeleteView,
 )
+from django.urls import reverse_lazy
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
