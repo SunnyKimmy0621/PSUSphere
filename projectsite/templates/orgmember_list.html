@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="content">
+    <div class="container-fluid">
+        <h4 class="page-title">Organization Members</h4>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="card-title">List of Members</div>
+                            <div class="card-category">Manage organization members</div>
+                        </div>
+                        <a href="{% url 'orgmember-add' %}" class="btn btn-success btn-rounded">Add Member</a>
+                    </div>
+
+                    <div class="card-body">
+                        <!-- Unified Search + Sort Form -->
+                        <form method="get" class="row g-2 mb-3 align-items-center">
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <input 
+                                        type="text" 
+                                        name="q" 
+                                        placeholder="Search by name..." 
+                                        class="form-control"
+                                        value="{{ request.GET.q|default:'' }}"
+                                    />
+                                    <button type="submit" class="btn btn-outline-primary">
+                                        <i class="la la-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-control form-control-sm" name="sort_by" onchange="this.form.submit()">
+                                    <option value="">-- Sort By --</option>
+                                    <option value="student__first_name" {% if request.GET.sort_by == 'student__first_name' %}selected{% endif %}>First Name</option>
+                                    <option value="student__last_name" {% if request.GET.sort_by == 'student__last_name' %}selected{% endif %}>Last Name</option>
+                                    <option value="date_joined" {% if request.GET.sort_by == 'date_joined' %}selected{% endif %}>Date Joined</option>
+                                </select>
+                            </div>
+                        </form>
+
+                        <!-- Members Table -->
+                        <div class="table-responsive">
+                            <table class="table table-striped mt-3">
+                                <thead>
+                                    <tr>
+                                        <th>Student</th>
+                                        <th>Organization</th>
+                                        <th>Date Joined</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for orgmember in orgmembers %}
+                                    <tr>
+                                        <td>{{ orgmember.student.first_name }} {{ orgmember.student.last_name }}</td>
+                                        <td>{{ orgmember.organization.name }}</td>
+                                        <td>{{ orgmember.date_joined }}</td>
+                                        <td>
+                                            <a href="{% url 'orgmember-update' orgmember.id %}" class="btn btn-sm btn-warning">Edit</a>
+                                            <a href="{% url 'orgmember-delete' orgmember.id %}" class="btn btn-sm btn-danger">Delete</a>
+                                        </td>
+                                    </tr>
+                                    {% empty %}
+                                    <tr>
+                                        <td colspan="4" class="text-center">No Records Found</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        {% include 'includes/pagination.html' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
